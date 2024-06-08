@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.shortcuts import render
 
+from .forms import BookingRequestForm
 from .models import Hall
 
 
@@ -22,4 +24,16 @@ def show_hall(request, hall_id):
 
 def book_request(request, hall_id):
     hall = Hall.objects.get(pk=hall_id)
-    return render(request, "frontend/booking.html", {"hall": hall})
+    if request.method == "POST":
+        form = BookingRequestForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.hall_id = hall_id
+            instance.save()
+            form = BookingRequestForm()
+            messages.add_message(
+                request, messages.INFO, "Your request has been sent successfully"
+            )
+        else:
+            form = BookingRequestForm()
+    return render(request, "frontend/booking.html", {"hall": hall, "form": form})

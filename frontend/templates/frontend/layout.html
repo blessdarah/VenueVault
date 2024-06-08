@@ -11,6 +11,14 @@
 </head>
 
 <body>
+    {% if messages %}
+    <ul class="list-unstyled alert alert-info">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 
