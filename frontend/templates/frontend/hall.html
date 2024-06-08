@@ -1,0 +1,61 @@
+{% extends 'frontend/layout.html' %}
+
+{% block content %}
+<div class="container pt-5">
+    <nav class="d-inline-flex text-secondary small">
+        <a href="/">Halls</a>
+        <span class="px-2">/</span>
+        <span>Details</span>
+    </nav>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <!-- <img class="card-image" src="https://dummyimage.com/250" alt=""> -->
+                <img class="card-image" src="{{ hall.images.url }}" alt="">
+            </div>
+                <a href="#" class="btn btn-primary mt-2">✈️ Send request</a>
+        </div>
+        <div class="col-md-8">
+            <ul class="list-group">
+                <li class="list-group-item d-flex gap-4">
+                    <strong>Name</strong>
+                    <span>{{hall.name}}</span>
+                </li>
+                <li class="list-group-item d-flex gap-4">
+                    <strong>Location</strong>
+                    <span>{{hall.address}} in {{hall.town}}, {{hall.region}}</span>
+                </li>
+                <li class="list-group-item d-flex gap-4">
+                    <strong>Capacity</strong>
+                    <span>{{hall.capacity}}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong class="d-block mb-2">Description</strong>
+                    <span>{{hall.description}}</span>
+                </li>
+            </ul>
+
+            <div class="card card-body mt-4">
+                <h4>Booked dates</h4>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Book from</th>
+                            <th>Untill</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>June 20</td>
+                            <td>June 21</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'frontend/layout.html' %}
+
+{% block content %}
+<div class="container pt-5">
+    <form class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="col-12">
+            <label class="visually-hidden" for="home">Search hall</label>
+            <div class="input-group">
+                <div class="input-group-text">🏠</div>
+                <input type="text" class="form-control" id="home" placeholder="Hall">
+            </div>
+        </div>
+    </form>
+
+    <div class="row mt-5">
+        {% for hall in halls %}
+        <div class="col-md-4">
+            <div class="card">
+                <!-- <img class="card-image" src="https://dummyimage.com/250" alt=""> -->
+                <img class="card-image" src="{{ hall.images.url }}" alt="">
+                <div class="card-body">
+                    <small><strong>{{hall.hourly_rate}}</strong>/hour</small>
+                    <a href="/halls/{{hall.id}}">
+                        <h4 class="card-title">{{ hall.name }}</h4>
+                    </a>
+                    <p>{{hall.description}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
