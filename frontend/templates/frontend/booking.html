@@ -1,0 +1,63 @@
+{% extends 'frontend/layout.html' %}
+
+{% block content %}
+<style>
+.form-group {
+    margin-bottom: 1rem;
+    label {
+        margin-bottom: .4rem;
+    }
+}
+</style>
+<div class="container pt-5">
+    <nav class="d-inline-flex text-secondary small">
+        <a href="/">Halls</a>
+        <span class="px-2">/</span>
+        <a href="/halls/{{hall.id}}">{{hall.name}}</a>
+        <span class="px-2">/</span>
+        <span>Booking</span>
+    </nav>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <!-- <img class="card-image" src="https://dummyimage.com/250" alt=""> -->
+                <img class="card-image" src="{{ hall.images.url }}" alt="">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <form action="#">
+                <fieldset>
+                    <legend>Personal info</legend>
+                    <div class="form-group">
+                        <label for="name">Enter your name</label>
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Enter your name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" id="email"  name="email" placeholder="Enter your email"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input class="form-control" type="text" id="address" name="address" placeholder="Enter your address"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="start_date">Start date/time</label>
+                                <input class="form-control" type="datetime-local" id="start_date" name="start_date"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="end_date">End date/time</label>
+                                <input class="form-control" id="end_date" type="datetime-local" name="end_date"/>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

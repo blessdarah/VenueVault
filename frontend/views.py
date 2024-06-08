@@ -18,3 +18,8 @@ def show_hall(request, hall_id):
             "hall": hall,
         },
     )
+
+
+def book_request(request, hall_id):
+    hall = Hall.objects.get(pk=hall_id)
+    return render(request, "frontend/booking.html", {"hall": hall})

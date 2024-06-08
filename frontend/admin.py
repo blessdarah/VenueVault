@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Booking, Hall, Review
+from .models import Booking, BookingRequest, Hall, Perk, Review
 
 # Register your models here.
 
@@ -34,4 +34,25 @@ class ReviewAdmin(admin.ModelAdmin):
         "content",
         "author_name",
         "author_email",
+    ]
+
+
+@admin.register(Perk)
+class PerkAdmin(admin.ModelAdmin):
+    list_display = [
+        "perk",
+    ]
+
+
+@admin.register(BookingRequest)
+class BookingRequstAdmin(admin.ModelAdmin):
+    list_display = [
+        "hall",
+        "booked_from",
+        "booked_till",
+        "status",
+        "customer_name",
+        "customer_email",
+        "customer_address",
+        "customer_contact",
     ]
