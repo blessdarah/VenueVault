@@ -27,6 +27,16 @@
         </div>
         <div class="col-md-8">
             <form action="/halls/{{hall.id}}/book-request" method="POST">
+                {% if form.errors %}
+                    <ul class="list-unstyled alert alert-danger">
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button class="btn btn-primary" type="submit">Submit</button>
